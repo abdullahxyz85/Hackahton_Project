@@ -335,7 +335,7 @@ def landing_page():
     
     .main-header::before {
         content: '';
-        position: absolute;
+        position: relative;
         top: 0;
         left: -100%;
         width: 100%;
