@@ -265,84 +265,11 @@ def main():
                         st.write(analysis)
 
 def landing_page():
-    st.markdown("""
-        <style>
-        /* Button Container */
-        .button-container {
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-            z-index: 9999;
-            padding: 10px;
-        }
 
-        /* Button Styling */
-        .get-started-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 35px;
-            background: linear-gradient(90deg, 
-                rgb(45, 211, 255) 0%, 
-                rgb(88, 156, 255) 100%
-            );
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 4px 15px rgba(45, 211, 255, 0.3),
-                0 0 30px rgba(88, 156, 255, 0.2);
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Text Styling */
-        .button-text {
-            background: linear-gradient(90deg, 
-                #E0F7FF 0%, 
-                #FFFFFF 100%
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .get-started-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 8px 25px rgba(45, 211, 255, 0.4),
-                0 0 50px rgba(88, 156, 255, 0.3);
-        }
-
-        /* Rocket emoji styling */
-        .button-icon {
-            font-size: 20px;
-            margin-right: 2px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
-
-        /* Ensure button stays on top */
-        div.stApp > header {
-            z-index: 999;
-        }
-        </style>
-
-        <div class="button-container">
-            <a href="https://huggingface.co/spaces/Sameer747/XAISupplyChainStreamlit" 
-               target="_blank"
-               class="get-started-button">
-                <span class="button-icon">🚀</span>
-                <span class="button-text">Get Started</span>
-            </a>
-        </div>
-    """, unsafe_allow_html=True)
 
     # Add spacing to prevent content overlap
     st.markdown("<div style='height: 2rem;'></div>", unsafe_allow_html=True)
-
+     
     # Advanced CSS with modern design elements and color schemes
     st.markdown("""
     <style>
@@ -751,6 +678,8 @@ def landing_page():
     </div>
     """, unsafe_allow_html=True)
 
+
+
     # After your title section and before feature cards, add the embedded video
     st.markdown("""
     <style>
@@ -877,70 +806,157 @@ def landing_page():
     </div>
     """, unsafe_allow_html=True)
 
-    # Enhanced CTA Section
+   # Enhanced CTA Section with reduced spacing
     st.markdown("""
-    <div style="text-align: center; padding: 60px 20px;">
-        <h2 style="color: #f1f5f9; margin-bottom: 20px; font-size: 2.5rem;">
+    <div style="text-align: center; padding: 30px 20px;">
+        <h2 style="color: #f1f5f9; margin-bottom: 15px; font-size: 2.5rem;">
             Ready to Transform Your Supply Chain?
         </h2>
-        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 40px;">
+        <h4 style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 20px;">
             Join industry leaders who have revolutionized their operations with SyncChain
-        </p>
+        </h4>
     </div>
+
+    <style>
+    /* Reduce spacing between sections */
+    .block-container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    
+    /* Adjust vertical gaps */
+    .stMarkdown {
+        margin-bottom: 0 !important;
+    }
+    </style>
     """, unsafe_allow_html=True)
 
-
-    # Add the bottom Get Started button with the link
     st.markdown("""
     <style>
-    /* Bottom button container */
-    .bottom-button-container {
-        text-align: center;
-        margin: 4rem 0;
-        padding: 2rem;
+    /* File viewer container styling */
+    .file-container {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin: 3rem auto;
+        padding: 0 20px;
     }
 
-    /* Bottom Get Started button styling */
-    .bottom-get-started-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 15px 40px;
-        background: linear-gradient(90deg, 
-            rgb(45, 211, 255) 0%, 
-            rgb(88, 156, 255) 100%
-        );
-        color: #FFFFFF;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 20px;
-        letter-spacing: 0.5px;
-        transition: all 0.3s ease;
+    .file-wrapper {
+        position: relative;
+        padding-bottom: 75%; /* 4:3 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 16px;
         box-shadow: 
-            0 4px 15px rgba(45, 211, 255, 0.3),
-            0 0 30px rgba(88, 156, 255, 0.2);
+            0 8px 30px rgba(0, 0, 0, 0.3),
+            0 0 40px rgba(45, 211, 255, 0.2);
+    }
+
+    .file-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         border: none;
-        cursor: pointer;
+        border-radius: 16px;
     }
 
-
-    .bottom-get-started-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 
-            0 8px 25px rgba(45, 211, 255, 0.4),
-            0 0 50px rgba(88, 156, 255, 0.3);
+    .file-title {
+        text-align: center;
+        font-size: 1.8rem;
+        color: #E0F7FF;
+        margin: 2rem 0;
+        font-weight: 600;
+        text-shadow: 0 2px 10px rgba(0, 255, 255, 0.2);
     }
     </style>
 
-    <div class="bottom-button-container">
-        <a href="https://huggingface.co/spaces/Sameer747/XAISupplyChainStreamlit" 
-           target="_blank"
-           class="bottom-get-started-btn">
-            🚀 Get Started
-        </a>
+    <div class="file-container">
+        <h2 class="file-title">Sample CSV File</h2>
+        <h4 class="file-title">Click on the button below to download the sample CSV file.</h4>
+        <div class="file-wrapper">
+            <iframe
+                src="https://drive.google.com/file/d/1UFB0UXHQWMhlur0ezTkuJbZ9iRSwc0ts/preview"
+                allow="autoplay"
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
     """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <style>
+        /* Button Container */
+        .button-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            padding: 10px;
+        }
+
+        /* Button Styling */
+        .get-started-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 35px;
+            background: linear-gradient(90deg, 
+                rgb(45, 211, 255) 0%, 
+                rgb(88, 156, 255) 100%
+            );
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 15px rgba(45, 211, 255, 0.3),
+                0 0 30px rgba(88, 156, 255, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Text Styling */
+        .button-text {
+            background: linear-gradient(90deg, 
+                #E0F7FF 0%, 
+                #FFFFFF 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .get-started-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 25px rgba(45, 211, 255, 0.4),
+                0 0 50px rgba(88, 156, 255, 0.3);
+        }
+
+        /* Rocket emoji styling */
+        .button-icon {
+            font-size: 20px;
+            margin-right: 2px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        </style>
+
+        <div class="button-container">
+            <a href="https://huggingface.co/spaces/Sameer747/XAISupplyChainStreamlit" 
+            target="_blank"
+            class="get-started-button">
+                <span class="button-icon">🚀</span>
+                <span class="button-text">Get Started</span>
+            </a>
+        </div>
+    """, unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()
