@@ -89,104 +89,6 @@ def process_data(df):
     }).reset_index()
     return df, category_df
 
-def landing_page():
-    st.markdown("""
-    <style>
-    .main-header {
-        text-align: center;
-        padding: 2rem 0;
-    }
-    .feature-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        margin: 2rem 0;
-    }
-    .feature-card {
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        flex: 1;
-        min-width: 250px;
-    }
-    .cta-button {
-        text-align: center;
-        margin: 2rem 0;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    # Header Section
-    st.markdown("""
-    <div class="main-header">
-        <h1>🚀 Welcome to SyncChain</h1>
-        <p style='font-size: 1.2em; color: #666;'>
-            AI-Powered Supply Chain Analytics Platform
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Feature Cards
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.markdown("""
-        <div class="feature-card">
-            <h3>📈 Demand Forecasting</h3>
-            <p>AI-driven demand predictions with up to 95% accuracy</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div class="feature-card">
-            <h3>📦 Inventory Optimization</h3>
-            <p>Smart inventory management with real-time insights</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col3:
-        st.markdown("""
-        <div class="feature-card">
-            <h3>🚨 Risk Monitoring</h3>
-            <p>Proactive risk detection and mitigation strategies</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col4:
-        st.markdown("""
-        <div class="feature-card">
-            <h3>🎮 Scenario Planning</h3>
-            <p>Interactive what-if analysis and simulation</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-    # Benefits Section
-    st.markdown("---")
-    st.markdown("<h2 style='text-align: center;'>Why Choose SyncChain?</h2>", unsafe_allow_html=True)
-    
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        st.markdown("### 🤖 AI-Powered")
-        st.write("Leveraging IBM Granite for intelligent supply chain insights")
-    
-    with col2:
-        st.markdown("### 📊 Data-Driven")
-        st.write("Make informed decisions with real-time analytics")
-    
-    with col3:
-        st.markdown("### 💡 User-Friendly")
-        st.write("Intuitive interface for seamless experience")
-
-    # Call to Action
-    st.markdown("---")
-    if st.button("🚀 Get Started with SyncChain", key="start_button", use_container_width=True):
-        st.session_state.show_main_app = True
-
 # Main App
 def main():
     st.set_page_config(page_title="SyncChain - AI Supply Chain Analytics", layout="wide")
@@ -206,8 +108,8 @@ def main():
         # Add a button to return to landing page
         if st.sidebar.button("← Back to Home"):
             st.session_state.show_main_app = False
-            st.experimental_rerun()
-            
+            st.rerun()
+        
         # Data Loading
         st.sidebar.header("Data Input")
         data_source = st.sidebar.radio("Choose Data Source:", 
@@ -227,7 +129,7 @@ def main():
         # Process data
         df, category_df = process_data(df)
         
-        # Tabs Interface
+        # Create tabs
         tab1, tab2, tab3, tab4 = st.tabs([
             "📈 Demand Forecast", 
             "📦 Inventory Optimizer", 
@@ -235,6 +137,7 @@ def main():
             "🎮 Scenario Lab"
         ])
 
+        # Tab 1: Demand Forecast
         with tab1:
             st.header("Demand Forecasting Engine")
             col1, col2 = st.columns([1, 2])
@@ -272,6 +175,7 @@ def main():
             fig.update_layout(hovermode="x unified")
             st.plotly_chart(fig, use_container_width=True)
 
+        # Tab 2: Inventory Optimizer
         with tab2:
             st.header("Inventory Optimization Dashboard")
             col1, col2 = st.columns([1, 2])
@@ -306,6 +210,7 @@ def main():
                              template='plotly_white')
             st.plotly_chart(fig, use_container_width=True)
 
+        # Tab 3: Risk Monitor
         with tab3:
             st.header("Risk Intelligence Center")
             risk_df = df.groupby(['Risk_Type', 'Severity_Level']).size().reset_index(name='Count')
@@ -328,6 +233,7 @@ def main():
                     analysis = granite_query(prompt)
                     st.write(analysis)
 
+        # Tab 4: Scenario Lab
         with tab4:
             st.header("Scenario Simulation Lab")
             with st.form("scenario_form"):
@@ -357,6 +263,455 @@ def main():
                         """
                         analysis = granite_query(prompt)
                         st.write(analysis)
+
+def landing_page():
+    # Advanced CSS with modern design elements and color schemes
+    st.markdown("""
+    <style>
+    /* Import fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+    
+    /* Reset and base styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+        background: #1a1a1a;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(45deg, #84fab0, #8fd3f4);
+        border-radius: 5px;
+    }
+    
+    /* Main background with animated gradient */
+    .stApp {
+        background: linear-gradient(
+            -45deg,
+            #0f172a,
+            #1e293b,
+            #242f3f,
+            #334155
+        );
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+    
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
+    /* Header styles with 3D effect */
+    .main-header {
+        text-align: center;
+        padding: 4rem 0;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+        margin: 20px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+    }
+    
+    .main-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+        transition: 0.5s;
+    }
+    
+    .main-header:hover::before {
+        left: 100%;
+    }
+    
+    .main-header h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 4.5rem;
+        font-weight: 700;
+        background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        transform: perspective(500px) rotateX(0deg);
+        transition: transform 0.3s ease;
+    }
+    
+    .main-header h1:hover {
+        transform: perspective(500px) rotateX(5deg);
+    }
+    
+    /* Animated subtitle */
+    .subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.5rem;
+        color: #94a3b8;
+        margin-bottom: 2rem;
+        font-weight: 400;
+        line-height: 1.6;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+        animation-delay: 0.5s;
+    }
+    
+    /* Enhanced feature cards */
+    .feature-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 40px 20px;
+        margin: 2rem auto;
+        max-width: 1400px;
+        perspective: 1000px;
+    }
+    
+    .feature-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 35px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        transform: translateZ(0);
+    }
+    
+    .feature-card::before,
+    .feature-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 20px;
+        background: linear-gradient(45deg, 
+            rgba(132, 250, 176, 0.1),
+            rgba(143, 211, 244, 0.1)
+        );
+        z-index: -1;
+        transition: opacity 0.3s ease;
+    }
+    
+    .feature-card::after {
+        background: linear-gradient(45deg,
+            rgba(132, 250, 176, 0.2),
+            rgba(143, 211, 244, 0.2)
+        );
+        opacity: 0;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px) rotateX(5deg);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+    
+    .feature-card:hover::after {
+        opacity: 1;
+    }
+    
+    /* Floating animation for stats */
+    .stat-item {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .stat-item:nth-child(2) {
+        animation-delay: 1s;
+    }
+    
+    .stat-item:nth-child(3) {
+        animation-delay: 2s;
+    }
+    
+    .stat-item:nth-child(4) {
+        animation-delay: 3s;
+    }
+    
+    /* Enhanced CTA button */
+    .cta-button {
+        background: linear-gradient(
+            45deg,
+            #84fab0 0%,
+            #8fd3f4 100%
+        );
+        color: #1a1a1a;
+        padding: 18px 40px;
+        border-radius: 50px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        border: none;
+        box-shadow: 0 10px 20px rgba(132, 250, 176, 0.2);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            45deg,
+            #8fd3f4 0%,
+            #84fab0 100%
+        );
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.4s ease;
+    }
+    
+    .cta-button:hover::before {
+        opacity: 1;
+    }
+    
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(132, 250, 176, 0.3);
+    }
+    
+    /* New feature: Animated background particles */
+    .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+    }
+    
+    .particle {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        animation: particleFloat 20s infinite linear;
+    }
+    
+    @keyframes particleFloat {
+        0% {
+            transform: translateY(0) translateX(0);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) translateX(100vw);
+            opacity: 0;
+        }
+    }
+    
+    /* New feature: Glowing text effect */
+    .glow-text {
+        text-shadow: 0 0 10px rgba(132, 250, 176, 0.5),
+                     0 0 20px rgba(132, 250, 176, 0.3),
+                     0 0 30px rgba(132, 250, 176, 0.1);
+    }
+    
+    /* New feature: Pulse animation */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+    
+    /* Enhanced responsive design */
+    @media (max-width: 768px) {
+        .main-header h1 {
+            font-size: 2.8rem;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            padding: 0 20px;
+        }
+        .feature-card {
+            margin: 10px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+        }
+    }
+    
+    /* New animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+    </style>
+    
+    <!-- Particle effect -->
+    <div class="particles">
+        ${Array(20).fill().map((_, i) => `
+            <div class="particle" style="
+                left: ${Math.random() * 100}vw;
+                animation-delay: ${Math.random() * 20}s;
+                animation-duration: ${15 + Math.random() * 10}s;
+            "></div>
+        `).join('')}
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Rest of your landing page content remains the same
+    # Enhanced Header Section with glow effect
+    st.markdown("""
+    <div class="main-header">
+        <h1 class="glow-text">🚀 SyncChain Analytics</h1>
+        <p class="subtitle">
+            Revolutionize Your Supply Chain with Next-Generation AI Intelligence
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Enhanced Feature Cards
+    st.markdown("""
+    <div class="feature-container">
+        <div class="feature-card">
+            <h3>📈 Predictive Analytics</h3>
+            <p>Harness the power of AI to forecast demand patterns with unprecedented accuracy. Our advanced algorithms provide 95% accurate predictions.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎯 Smart Inventory</h3>
+            <p>Optimize stock levels automatically with real-time tracking and AI-driven reordering systems. Reduce holding costs by up to 30%.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🛡️ Risk Intelligence</h3>
+            <p>Proactively identify and mitigate supply chain risks with our advanced early warning system and automated contingency planning.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🔄 Scenario Planning</h3>
+            <p>Create and simulate multiple supply chain scenarios in real-time. Make data-driven decisions with confidence.</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Enhanced Stats Section
+    st.markdown("""
+    <div class="stats-container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Forecast Accuracy</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">30%</div>
+                <div class="stat-label">Cost Reduction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Real-time Monitoring</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Enterprise Clients</div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Enhanced Benefits Section
+    st.markdown("""
+    <div class="benefits-container">
+        <h2 style="text-align: center; color: #f1f5f9; margin-bottom: 40px; font-size: 2.5rem;">
+            Why Choose SyncChain?
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div class="benefit-item">
+                <h3 style="color: #f1f5f9; margin-bottom: 15px;">🤖 AI-Powered</h3>
+                <p style="color: #94a3b8;">Cutting-edge IBM Granite integration delivering intelligent insights and predictions</p>
+            </div>
+            <div class="benefit-item">
+                <h3 style="color: #f1f5f9; margin-bottom: 15px;">📊 Real-Time Analytics</h3>
+                <p style="color: #94a3b8;">Live dashboards and instant alerts for immediate decision-making</p>
+            </div>
+            <div class="benefit-item">
+                <h3 style="color: #f1f5f9; margin-bottom: 15px;">🔐 Enterprise Security</h3>
+                <p style="color: #94a3b8;">Bank-grade encryption and security protocols protecting your data</p>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Enhanced CTA Section
+    st.markdown("""
+    <div style="text-align: center; padding: 60px 20px;">
+        <h2 style="color: #f1f5f9; margin-bottom: 20px; font-size: 2.5rem;">
+            Ready to Transform Your Supply Chain?
+        </h2>
+        <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 40px;">
+            Join industry leaders who have revolutionized their operations with SyncChain
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # CTA Button
+    if st.button("🚀 Get Started Now", key="start_button", use_container_width=True):
+        st.session_state.show_main_app = True
+
+    # Enhanced Footer
+    st.markdown("""
+    <div style="text-align: center; padding: 60px 0; color: #64748b;">
+        <p style="margin-bottom: 10px;">© 2024 SyncChain Analytics. All rights reserved.</p>
+        <p style="font-size: 0.9rem;">Powering the future of supply chain intelligence</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
