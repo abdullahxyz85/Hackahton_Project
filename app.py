@@ -751,64 +751,60 @@ def landing_page():
     </div>
     """, unsafe_allow_html=True)
 
+    # After your title section and before feature cards, add the embedded video
     st.markdown("""
     <style>
-    /* Video demo section styling */
-    .video-demo-section {
-        text-align: center;
-        margin: 3rem auto;
-        padding: 2rem;
+    /* Video container styling */
+    .video-container {
+        position: relative;
+        width: 100%;
         max-width: 800px;
+        margin: 3rem auto;
+        padding: 0 20px;
     }
 
-    .video-demo-title {
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 
+            0 8px 30px rgba(0, 0, 0, 0.3),
+            0 0 40px rgba(45, 211, 255, 0.2);
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 16px;
+    }
+
+    .video-title {
+        text-align: center;
         font-size: 1.8rem;
         color: #E0F7FF;
-        margin-bottom: 1.5rem;
+        margin: 2rem 0;
         font-weight: 600;
         text-shadow: 0 2px 10px rgba(0, 255, 255, 0.2);
     }
-
-    .video-demo-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 15px 30px;
-        background: linear-gradient(90deg, 
-            rgba(45, 211, 255, 0.1) 0%, 
-            rgba(88, 156, 255, 0.1) 100%
-        );
-        border: 1px solid rgba(45, 211, 255, 0.3);
-        border-radius: 12px;
-        color: #E0F7FF;
-        text-decoration: none;
-        font-size: 1.2rem;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-    }
-
-    .video-demo-link:hover {
-        background: linear-gradient(90deg, 
-            rgba(45, 211, 255, 0.2) 0%, 
-            rgba(88, 156, 255, 0.2) 100%
-        );
-        transform: translateY(-2px);
-        box-shadow: 0 5px 20px rgba(45, 211, 255, 0.2);
-    }
-
-    .video-icon {
-        font-size: 1.5rem;
-    }
     </style>
 
-    <div class="video-demo-section">
-        <h2 class="video-demo-title">Watch Our Demo</h2>
-        <a href="https://www.youtube.com/watch?v=9ZYpQvWEnjk" 
-           target="_blank"
-           class="video-demo-link">
-            <span class="video-icon">🎥</span>
-            Watch Video Demo
-        </a>
+    <div class="video-container">
+        <h2 class="video-title">Watch Our Demo</h2>
+        <div class="video-wrapper">
+            <iframe
+                src="https://www.youtube.com/embed/9ZYpQvWEnjk"
+                title="ChainSync Analytics Demo"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
