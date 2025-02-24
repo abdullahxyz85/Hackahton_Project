@@ -595,6 +595,59 @@ def landing_page():
             transform: translateY(-10px);
         }
     }
+
+    .hero-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 5rem;
+        font-weight: 700;
+        background: linear-gradient(120deg, 
+            #00ffcc 0%, 
+            #00e6ff 50%, 
+            #33ccff 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+        animation: titleFloat 6s ease-in-out infinite;
+        text-shadow: 
+            0 0 20px rgba(0, 255, 204, 0.5),
+            0 0 40px rgba(0, 230, 255, 0.3),
+            0 0 60px rgba(51, 204, 255, 0.2);
+    }
+
+    /* Add this glow animation */
+    @keyframes glow {
+        0%, 100% {
+            text-shadow: 
+                0 0 20px rgba(0, 255, 204, 0.5),
+                0 0 40px rgba(0, 230, 255, 0.3),
+                0 0 60px rgba(51, 204, 255, 0.2);
+        }
+        50% {
+            text-shadow: 
+                0 0 30px rgba(0, 255, 204, 0.7),
+                0 0 60px rgba(0, 230, 255, 0.5),
+                0 0 90px rgba(51, 204, 255, 0.3);
+        }
+    }
+
+    /* Add this to the hero-section class */
+    .hero-section {
+        background: rgba(255,255,255,0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 30px;
+        padding: 4rem 2rem;
+        margin: 2rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 
+            0 20px 40px rgba(0,0,0,0.2),
+            0 0 30px rgba(0, 255, 204, 0.1),
+            0 0 60px rgba(0, 230, 255, 0.1);
+    }
     </style>
     
     <!-- Particle effect -->
@@ -612,9 +665,9 @@ def landing_page():
     # Rest of your landing page content remains the same
     # Enhanced Header Section with glow effect
     st.markdown("""
-    <div class="main-header">
-        <h1 class="glow-text">🚀 SyncChain Analytics</h1>
-        <p class="subtitle">
+    <div class="hero-section">
+        <h1 class="hero-title">🔄 ChainSync Analytics</h1>
+        <p style="text-align: center; color: #94a3b8; font-size: 1.5rem; margin-bottom: 2rem;">
             Revolutionize Your Supply Chain with Next-Generation AI Intelligence
         </p>
     </div>
