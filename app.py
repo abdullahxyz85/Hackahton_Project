@@ -832,15 +832,55 @@ def landing_page():
     </div>
     """, unsafe_allow_html=True)
 
-    # CTA Button
-    if st.button("🚀 Get Started Now", key="start_button", use_container_width=True):
-        st.session_state.show_main_app = True
 
-    # Enhanced Footer
+    # Add the bottom Get Started button with the link
     st.markdown("""
-    <div style="text-align: center; padding: 60px 0; color: #64748b;">
-        <p style="margin-bottom: 10px;">© 2024 SyncChain Analytics. All rights reserved.</p>
-        <p style="font-size: 0.9rem;">Powering the future of supply chain intelligence</p>
+    <style>
+    /* Bottom button container */
+    .bottom-button-container {
+        text-align: center;
+        margin: 4rem 0;
+        padding: 2rem;
+    }
+
+    /* Bottom Get Started button styling */
+    .bottom-get-started-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 15px 40px;
+        background: linear-gradient(90deg, 
+            rgb(45, 211, 255) 0%, 
+            rgb(88, 156, 255) 100%
+        );
+        color: #FFFFFF;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: 
+            0 4px 15px rgba(45, 211, 255, 0.3),
+            0 0 30px rgba(88, 156, 255, 0.2);
+        border: none;
+        cursor: pointer;
+    }
+
+    .bottom-get-started-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 8px 25px rgba(45, 211, 255, 0.4),
+            0 0 50px rgba(88, 156, 255, 0.3);
+    }
+    </style>
+
+    <div class="bottom-button-container">
+        <a href="https://huggingface.co/spaces/Sameer747/XAISupplyChainStreamlit" 
+           target="_blank"
+           class="bottom-get-started-btn">
+            🚀 Get Started
+        </a>
     </div>
     """, unsafe_allow_html=True)
 
