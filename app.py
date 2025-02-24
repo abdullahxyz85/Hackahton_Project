@@ -265,6 +265,84 @@ def main():
                         st.write(analysis)
 
 def landing_page():
+    st.markdown("""
+        <style>
+        /* Button Container */
+        .button-container {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            z-index: 9999;
+            padding: 10px;
+        }
+
+        /* Button Styling */
+        .get-started-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 35px;
+            background: linear-gradient(90deg, 
+                rgb(45, 211, 255) 0%, 
+                rgb(88, 156, 255) 100%
+            );
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 15px rgba(45, 211, 255, 0.3),
+                0 0 30px rgba(88, 156, 255, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Text Styling */
+        .button-text {
+            background: linear-gradient(90deg, 
+                #E0F7FF 0%, 
+                #FFFFFF 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .get-started-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 25px rgba(45, 211, 255, 0.4),
+                0 0 50px rgba(88, 156, 255, 0.3);
+        }
+
+        /* Rocket emoji styling */
+        .button-icon {
+            font-size: 20px;
+            margin-right: 2px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Ensure button stays on top */
+        div.stApp > header {
+            z-index: 999;
+        }
+        </style>
+
+        <div class="button-container">
+            <a href="https://huggingface.co/spaces/Sameer747/XAISupplyChainStreamlit" 
+               target="_blank"
+               class="get-started-button">
+                <span class="button-icon">🚀</span>
+                <span class="button-text">Get Started</span>
+            </a>
+        </div>
+    """, unsafe_allow_html=True)
+
+    # Add spacing to prevent content overlap
+    st.markdown("<div style='height: 2rem;'></div>", unsafe_allow_html=True)
+
     # Advanced CSS with modern design elements and color schemes
     st.markdown("""
     <style>
