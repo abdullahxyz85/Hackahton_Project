@@ -265,7 +265,128 @@ def main():
                         st.write(analysis)
 
 def landing_page():
+    st.markdown("""
+    <style>
+    /* Global responsive styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
+    /* Responsive container */
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    /* Responsive typography */
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4.5rem) !important;
+        line-height: 1.2 !important;
+        padding: 0 10px !important;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.2rem, 3vw, 1.8rem) !important;
+        padding: 0 15px !important;
+    }
+
+    .demo-title {
+        font-size: clamp(2rem, 4vw, 2.8rem) !important;
+        padding: 0 10px !important;
+    }
+
+    /* Responsive video container */
+    .video-container {
+        width: 100% !important;
+        max-width: 800px !important;
+        padding: 0 10px !important;
+        margin: 2rem auto !important;
+    }
+
+    /* Responsive buttons */
+    .get-started-btn {
+        padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 40px) !important;
+        font-size: clamp(14px, 2.5vw, 20px) !important;
+    }
+
+    /* Responsive spacing */
+    @media screen and (max-width: 768px) {
+        .brand-container {
+            margin: 1rem 0 !important;
+        }
+
+        .video-container {
+            margin: 1.5rem auto !important;
+        }
+
+        .file-container {
+            padding: 0 10px !important;
+        }
+
+        .center-button-container {
+            padding: 0.5rem !important;
+        }
+
+        /* Adjust header for mobile */
+        .header-container {
+            padding: 10px 20px !important;
+        }
+
+        /* Adjust feature cards for mobile */
+        .feature-card {
+            margin: 1rem 0 !important;
+            padding: 15px !important;
+        }
+
+        /* Adjust CTA section for mobile */
+        div[style*="padding: 60px 20px"] {
+            padding: 30px 15px !important;
+        }
+
+        /* Adjust footer for mobile */
+        div[style*="padding: 60px 0"] {
+            padding: 30px 15px !important;
+        }
+    }
+
+    /* Tablet adjustments */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .hero-title {
+            font-size: 3.5rem !important;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem !important;
+        }
+
+        .video-container {
+            margin: 2rem auto !important;
+        }
+    }
+
+    /* Ensure smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Improve touch targets on mobile */
+    @media (hover: none) and (pointer: coarse) {
+        .get-started-btn {
+            min-height: 44px !important;
+        }
+
+        a, button {
+            min-height: 44px !important;
+            min-width: 44px !important;
+        }
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
     # Add spacing to prevent content overlap
     st.markdown("<div style='height: 2rem;'></div>", unsafe_allow_html=True)
@@ -716,6 +837,7 @@ def landing_page():
     .video-title {
         text-align: center;
         font-size: 1.8rem;
+        font-family: 'Space Grotesk', sans-serif;
         color: #E0F7FF;
         margin: 2rem 0;
         font-weight: 600;
@@ -866,6 +988,7 @@ def landing_page():
     .file-title {
         text-align: center;
         font-size: 1.8rem;
+        font-family: 'Space Grotesk', sans-serif;
         color: #E0F7FF;
         margin: 2rem 0;
         font-weight: 600;
@@ -875,7 +998,7 @@ def landing_page():
 
     <div class="file-container">
         <h2 class="file-title">Sample CSV File</h2>
-        <h4 class="file-title">Click on the button below to download the sample CSV file.</h4>
+        <h5 class="file-title">Click on the button below to download the sample CSV file.</h5>
         <div class="file-wrapper">
             <iframe
                 src="https://drive.google.com/file/d/1UFB0UXHQWMhlur0ezTkuJbZ9iRSwc0ts/preview"
