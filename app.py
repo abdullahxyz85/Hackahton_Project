@@ -928,6 +928,7 @@ def landing_page():
         cursor: pointer;
     }
 
+
     .bottom-get-started-btn:hover {
         transform: translateY(-2px);
         box-shadow: 
